@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine:3.20
 
 LABEL description="Simple forum software for building great communities" \
       maintainer="Magicalex <magicalex@mondedie.fr>"
@@ -26,35 +26,35 @@ RUN apk add --no-progress --no-cache \
     icu-data-full \
     libcap \
     nginx \
-    php8 \
-    php8-ctype \
-    php8-curl \
-    php8-dom \
-    php8-exif \
-    php8-fileinfo \
-    php8-fpm \
-    php8-gd \
-    php8-gmp \
-    php8-iconv \
-    php8-intl \
-    php8-mbstring \
-    php8-mysqlnd \
-    php8-opcache \
-    php8-pecl-apcu \
-    php8-openssl \
-    php8-pdo \
-    php8-pdo_mysql \
-    php8-phar \
-    php8-session \
-    php8-tokenizer \
-    php8-xmlwriter \
-    php8-zip \
-    php8-zlib \
+    php83 \
+    php83-ctype \
+    php83-curl \
+    php83-dom \
+    php83-exif \
+    php83-fileinfo \
+    php83-fpm \
+    php83-gd \
+    php83-gmp \
+    php83-iconv \
+    php83-intl \
+    php83-mbstring \
+    php83-mysqlnd \
+    php83-opcache \
+    php83-pecl-apcu \
+    php83-openssl \
+    php83-pdo \
+    php83-pdo_mysql \
+    php83-phar \
+    php83-session \
+    php83-tokenizer \
+    php83-xmlwriter \
+    php83-zip \
+    php83-zlib \
     su-exec \
     s6 \
   && cd /tmp \
   && curl --progress-bar http://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-  && sed -i 's/memory_limit = .*/memory_limit = ${PHP_MEMORY_LIMIT}/' /etc/php8/php.ini \
+  && sed -i 's/memory_limit = .*/memory_limit = ${PHP_MEMORY_LIMIT}/' /etc/php83/php.ini \
   && chmod +x /usr/local/bin/composer \
   && mkdir -p /run/php /flarum/app \
   && COMPOSER_CACHE_DIR="/tmp" composer create-project flarum/flarum:$VERSION /flarum/app \
